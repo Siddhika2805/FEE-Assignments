@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login UI</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    
+<script>// ==============================
+// Selecting Elements
+// ==============================
+
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+const loginBox = document.querySelector(".login");
+const closeBtn = document.querySelector(".close");
+const chatBtn = document.querySelector(".chat");
+const body = document.body;
+
+// ==============================
+// Disable Login Initially
+// ==============================
+
+loginBtn.disabled = true;
+
+// ==============================
+// Enable Button
+// ==============================
+
+function enableButton() {
+
+    if(email.value.trim() !== "" && password.value.trim() !== ""){
+
+        loginBtn.disabled = false;
+        loginBtn.style.opacity = "1";
+
+    }
+
+    else{
+
+        loginBtn.disabled = true;
+        loginBtn.style.opacity = "0.5";
+
+    }
+
+}
+
+email.addEventListener("input", enableButton);
+password.addEventListener("input", enableButton);
+
+// ==============================
+// Email Validation
+// ==============================
+
+function validEmail(emailAddress){
+
+    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return pattern.test(emailAddress);
+
+}
+
+// ==============================
+// Login
+// ==============================
+
+loginBtn.addEventListener("click", function(){
+
+    let emailValue = email.value.trim();
+    let passwordValue = password.value.trim();
+
+    if(emailValue==""){
+
+        alert("Email is Required");
+        email.focus();
+        return;
+
+    }
+
+    if(!validEmail(emailValue)){
+
+        alert("Invalid Email");
+        email.focus();
+        return;
+
+    }
+
+    if(passwordValue==""){
+
+        alert("Password is Required");
+        password.focus();
+        return;
+
+    }
+
+    if(passwordValue.length<6){
+
+        alert("Password must contain minimum 6 characters");
+        password.focus();
+        return;
+
+    }
+
+    alert("Login Successful");
+
+    localStorage.setItem("Email",emailValue);
+
+});
+
+// ==============================
+// Close Login Box
+// ==============================
+
+closeBtn.addEventListener("click",function(){
+
+    loginBox.style.display="none";
+
+});
+
+// ==============================
+// Double Click Login Box
+// ==============================
+
+loginBox.addEventListener("dblclick",function(){
+
+    loginBox.style.transform="scale(1.05)";
+
+    setTimeout(function(){
+
+        loginBox.style.transform="scale(1)";
+
+    },300);
+
+});
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key==="Enter"){
+
+        loginBtn.click();
+
+    }
+
+});
+
+// ==============================
+// Password Show Hide
+// ==============================
+
+password.addEventListener("dblclick",function(){
+
+    if(password.type==="password"){
+
+        password.type="text";
+
+    }
+
+    else{
+
+        password.type="password";
+
+    }
+
+});
+
+// ==============================
+// Welcome Back
+// ==============================
+
+window.onload=function(){
+
+    let storedEmail=localStorage.getItem("Email");
+
+    if(storedEmail){
+
+        email.value=storedEmail;
+
+    }
+
+}
+
+
+
+// ==============================
+// Button Hover Effect
+// ==============================
+
+loginBtn.addEventListener("mouseover",function(){
+
+    loginBtn.style.transform="scale(1.05)";
+
+});
+
+loginBtn.addEventListener("mouseout",function(){
+
+    loginBtn.style.transform="scale(1)";
+
+});
+
+// ==============================
+// Character Counter
+// ==============================
+
+password.addEventListener("input",function(){
+
+    console.log("Password Length :",password.value.length);
+
+});
+
+document.addEventListener("contextmenu",function(event){
+
+    event.preventDefault();
+
+});
+
+// ==============================
+// Caps Lock Detection
+// ==============================
+
+password.addEventListener("keyup",function(event){
+
+    if(event.getModifierState("CapsLock")){
+
+        console.log("Caps Lock is ON");
+
+    }
+
+});
+
+// ==============================
+// Random Background Every 5 Seconds
+// ==============================
+
+const colors=[
+"#0f2027",
+"#1d3557",
+"#6a0572",
+"#003049",
+"#14213d"
+];
+
+setInterval(function(){
+
+    let random=Math.floor(Math.random()*colors.length);
+
+    body.style.background=colors[random];
+
+},5000);
+</script>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+        }
+
+        nav{
+            position:fixed;
+            top:0;
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:#0f172a;
+            padding:15px 30px;
+            color:white;
+            box-shadow:0 5px 15px rgba(0,0,0,.2);
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+        }
+
+        nav ul li{
+            margin-left:40px;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            font-size:18px;
+            transition:.3s;
+        }
+
+        nav ul li a:hover{
+            color:#38bdf8;
+        }
+
+        .login{
+            width:400px;
+            background:white;
+            padding:35px;
+            border-radius:12px;
+            box-shadow:0 15px 40px rgba(0,0,0,.3);
+            color:#1e293b;
+            position:relative;
+        }
+
+        .login h2{
+            text-align:center;
+            margin-bottom:20px;
+            color:#1e3a8a;
+        }
+
+        .login input{
+            width:100%;
+            padding:14px;
+            margin:12px 0;
+            border:1px solid #cbd5e1;
+            outline:none;
+            border-radius:8px;
+            font-size:15px;
+            transition:.3s;
+        }
+
+        .login input:focus{
+            border-color:#2563eb;
+            box-shadow:0 0 8px rgba(37,99,235,.3);
+        }
+
+        .login button{
+            width:100%;
+            padding:14px;
+            margin-top:20px;
+            border:none;
+            border-radius:8px;
+            background:#2563eb;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .login button:hover{
+            background:#1d4ed8;
+        }
+
+        .login p{
+            margin-top:15px;
+            text-align:center;
+        }
+
+        .login p a{
+            color:#2563eb;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .login p a:hover{
+            text-decoration:underline;
+        }
+
+        .count{
+            position:absolute;
+            top:7px;
+            right:19px;
+            background:#ef4444;
+            color:white;
+            border-radius:50%;
+            width:20px;
+            height:20px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        .password-box{
+            position:relative;
+        }
+
+        .info{
+            position:absolute;
+            right:15px;
+            top:50%;
+            transform:translateY(-50%);
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            background:#64748b;
+            color:white;
+            font-size:12px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            cursor:pointer;
+        }
+
+        .tool{
+            position:absolute;
+            right:45px;
+            top:10%;
+            /* transform:translateY(-50%); */
+            background:#111827;
+            color:white;
+            padding:6px 10px;
+            border-radius:6px;
+            font-size:12px;
+            display:none;
+            white-space:nowrap;
+        }
+
+        .info:hover + .tool{
+            display:block;
+        }
+
+        .cross{
+            position:absolute;
+            top:12px;
+            right:15px;
+            font-size:24px;
+            font-weight:bold;
+            cursor:pointer;
+            color:#64748b;
+            
+        }
+
+        .cross:hover{
+            color:#ef4444;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Siddhika</h2>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="notify">
+            <i class="fa-solid fa-bell" style="font-size:20px;"></i>
+            <span class="count">3</span>
+        </div>
+    </nav>
+
+    <div class="login">
+
+        <div class="cross">&times;</div>
+
+        <h2>Login</h2>
+
+        <input type="email" id="email" placeholder="Enter Email">
+
+        <div class="password-box">
+            <input type="password" id="password" placeholder="Enter Password">
+            <span class="info">?</span>
+            <span class="tool">Only 8 characters should be there</span>
+        </div>
+    
+
+        <button id="loginBtn">Login</button>
+
+        <p>Don't have an account? <a href="#">Sign Up</a></p>
+
+    </div>
+
+</body>
+</html>

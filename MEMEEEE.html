@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breaking Meme</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    background:#0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.news{
+    width:800px;
+    max-width:90%;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.top{
+    background:#e11d48;
+    color:white;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.main{
+    padding:30px;
+}
+
+.headline{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.meme{
+    background:#f3f4f6;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    border:3px dashed #cbd5e1;
+}
+
+.top-text{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.face{
+    font-size:120px;
+    margin:20px 0;
+}
+
+.bottom-text{
+    font-size:24px;
+    color:#374151;
+}
+
+.footer{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    color:#6b7280;
+    font-size:14px;
+}
+
+.flash{
+    animation:flash 1s infinite;
+}
+
+@keyframes flash{
+    50%{
+        opacity:.3;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="news">
+
+    <div class="top">
+        <span class="flash">🔴 BREAKING NEWS</span>
+        <span>LIVE</span>
+    </div>
+
+    <div class="main">
+
+        <div class="headline">
+            Local Student Says "I'll Sleep Early Tonight"
+        </div>
+
+        <div class="meme">
+
+            <div class="top-text">
+                11:00 PM : "Just one YouTube video..."
+            </div>
+
+            <div class="face">
+                🤡
+            </div>
+
+            <div class="bottom-text">
+                3:47 AM : Watching "How Penguins Flirt"
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <span>📍 Internet</span>
+            <span>😂 1.2M Laughs</span>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

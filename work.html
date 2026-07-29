@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrolling Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+section{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    color:red;
+    text-shadow:2px 2px 5px black;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.page1{
+    background-image:url("tulips_3.jpg");
+}
+
+.page3{
+    background-image:url("Screenshot 2026-07-02 104649.png");
+}
+
+nav a{
+    text-decoration:none;
+    background:blue;
+    color:black;
+    padding:10px 15px;
+    margin:5px;
+    border-radius:5px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+
+
+<section class="page1" id="home">
+    <h1>Welcome To My Website</h1>
+</section>
+
+<section class="page2" id="about">
+    <h1>About Us</h1>
+</section>
+
+<section class="page3" id="contact">
+    <h1>Contact Us</h1>
+</section>
+<section class="page4" id="services">
+    <h1>THANK YOUUU</h1>
+
+</body>
+</html>

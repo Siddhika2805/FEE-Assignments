@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#dcecff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:Arial, sans-serif;
+}
+
+.box{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid gray;
+    border-radius:8px;
+    outline:none;
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:50px;
+}
+
+.heart{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:22px;
+    color:black;
+    cursor:pointer;
+}
+
+.message{
+    position:absolute;
+    top:-45px;
+    right:0;
+    background:black;
+    color:white;
+    padding:8px 10px;
+    border-radius:6px;
+    font-size:13px;
+    white-space:nowrap;
+    opacity:0;
+    visibility:hidden;
+    transition:0.3s;
+}
+
+.heart:hover + .message{
+    opacity:1;
+    visibility:visible;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h2>Login</h2>
+
+<input type="text" placeholder="Enter Name">
+
+<div class="password-box">
+
+<input type="password" placeholder="Enter Password">
+
+<span class="heart">♥</span>
+
+<div class="message">
+Password should be exactly 8 characters.
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
